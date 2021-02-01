@@ -75,24 +75,28 @@ public class ConditionalStatementsJUnit4 {
         int act = ConditionalStatements.HW_1_1_3(0, 0, 3);
         Assert.assertEquals(exp, act);
     }
+
     @Test
     public void HW_1_1_3_2() {
         int exp = 4;
         int act = ConditionalStatements.HW_1_1_3(0, 1, 3);
         Assert.assertEquals(exp, act);
     }
+
     @Test
     public void HW_1_1_3_3() {
         int exp = 5;
         int act = ConditionalStatements.HW_1_1_3(2, 0, 3);
         Assert.assertEquals(exp, act);
     }
+
     @Test
     public void HW_1_1_3_4() {
         int exp = 0;
         int act = ConditionalStatements.HW_1_1_3(0, 0, 0);
         Assert.assertEquals(exp, act);
     }
+
     @Test
     public void HW_1_1_3_5() {
         int exp = 5;
@@ -109,26 +113,30 @@ public class ConditionalStatementsJUnit4 {
         int act = ConditionalStatements.HW_1_1_4(1, 2, 3);
         Assert.assertEquals(exp, act);
     }
+
     @Test
     public void HW_1_1_4_2() {
         int exp = 0;
         int act = ConditionalStatements.HW_1_1_4(0, 0, 0);
         Assert.assertEquals(exp, act);
     }
+
     @Test
     public void HW_1_1_4_3() {
         int exp = 4;
         int act = ConditionalStatements.HW_1_1_4(-1, 2, 3);
         Assert.assertEquals(exp, act);
     }
+
     @Test
     public void HW_1_1_4_4() {
         int exp = 24;
         int act = ConditionalStatements.HW_1_1_4(-2, -4, 3);
         Assert.assertEquals(exp, act);
     }
+
     /**
-     *  Пятое задание
+     * Пятое задание
      */
     @Test
     public void HW_1_1_5_1() {

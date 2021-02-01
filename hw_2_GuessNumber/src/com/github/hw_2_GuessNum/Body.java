@@ -7,7 +7,7 @@ public class Body {
     static final Scanner scan = new Scanner(System.in);
     static final Random generate = new Random();
 
-//    private static int minToMax() {
+    //    private static int minToMax() {
 //        int min = 1;
 //        int max = 200;
 //        return min;
@@ -20,7 +20,7 @@ public class Body {
     public static void welcome() {
         System.out.println("Hi, let's play with me one very interesting game. " +
                 "Try to guess the number that I made a wish for. Don't worry, I'll help you.");
-        System.out.println("Ok, you have 5 try to guess the number. I wish number from"+ min + "to" + max);
+        System.out.println("Ok, you have 5 try to guess the number. I wish number from" + min + "to" + max);
     }
 
     public static int generatedNumber() {
@@ -29,46 +29,41 @@ public class Body {
         return rN;
     }
 
-    public static void method () {
+    public static void method() {
         int wishedNum = generatedNumber();
         int attemptNum = scan.nextInt();
         int attempt = 1;
-        if (attempt == attempts){
-            if (attemptNum != wishedNum){
+        if (attempt == attempts) {
+            if (attemptNum != wishedNum) {
                 System.out.println("Sorry, you lose.");
-            }
-            else{
+            } else {
                 System.out.println("NICE");
             }
         }
-        if (attemptNum != wishedNum){
+        if (attemptNum != wishedNum) {
             System.out.println("Oh. First fail. Ok, Try again. I believe in you. ");
             attempt += 1;
             int previousAttemptNum = attemptNum;
             attemptNum = scan.nextInt();
-            while(attempt <= attempts){
+            while (attempt <= attempts) {
                 attempt += 1;
-                if (attemptNum != wishedNum){
-                    if (Math.abs(wishedNum - attemptNum) < Math.abs(wishedNum - previousAttemptNum) ){
+                if (attemptNum != wishedNum) {
+                    if (Math.abs(wishedNum - attemptNum) < Math.abs(wishedNum - previousAttemptNum)) {
                         System.out.println("Fail, but it warmer");
-                    }
-                    else if (Math.abs(wishedNum - attemptNum) == Math.abs(wishedNum - previousAttemptNum) ){
+                    } else if (Math.abs(wishedNum - attemptNum) == Math.abs(wishedNum - previousAttemptNum)) {
                         System.out.println("Not warmer and is not cold. Same");
-                    }
-                    else {
+                    } else {
                         System.out.println("Fail. Colder.");
                     }
                     previousAttemptNum = attemptNum;
                     attemptNum = scan.nextInt();
-                    attempt +=1;
-                }
-                else{
+                    attempt += 1;
+                } else {
                     System.out.println("Yeah boiiii. You win");
                     break;
                 }
             }
-        }
-        else{
+        } else {
             System.out.println("Wow. today luck on your side. Let's go to the Vegas!");
         }
     }
