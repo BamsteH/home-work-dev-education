@@ -3,7 +3,7 @@ package com.github.hw_3_JUnitTest;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ConditionalStatementsJUnit4 {
+public class JUnit4_ConditionalStatements {
     /**
      * Первое задание
      */
