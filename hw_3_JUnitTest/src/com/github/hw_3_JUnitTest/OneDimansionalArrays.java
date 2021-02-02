@@ -164,15 +164,6 @@ public class OneDimansionalArrays {
         return newArray;
     }
 
-    public static void main(String[] args) {
-        OneDimansionalArrays app = new OneDimansionalArrays(new Scanner(System.in));
-        System.out.println(app.countOfOddInArray());
-        OneDimansionalArrays rest = new OneDimansionalArrays(new Scanner(System.in));
-        System.out.println(Arrays.toString(rest.reverseOfArray()));
-        OneDimansionalArrays rekt = new OneDimansionalArrays(new Scanner(System.in));
-        System.out.println(Arrays.toString(rekt.changerOfArray()));
-    }
-
 
     /** public static int countOfOddInArray(int a1, int a2, int a3) {
          int[] Array;
