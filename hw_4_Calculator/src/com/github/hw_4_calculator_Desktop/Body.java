@@ -1,6 +1,7 @@
 package com.github.hw_4_calculator_Desktop;
 
 import javax.swing.*;
+import java.awt.Color;
 
 public class Body extends JFrame {
 
@@ -11,20 +12,21 @@ public class Body extends JFrame {
     private JTextField numSecond;
 
     private JTextField numResult;
-
     public Body(ActionManager actionManager) {
         JPanel content = new JPanel();
-        content.setLayout(null);
+        content.setBackground(new Color(52, 128, 121));
 
         JFrame frame = new JFrame("Calculator");
         frame.setSize(400, 430);
         frame.setLayout(null);
         frame.setVisible(true);
+        frame.setBackground(new Color(52, 128, 121));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         JButton button = new JButton("Calculate");
-        button.setBounds(100, 200, 200, 75);
+        button.setBounds(50, 200, 300, 75);
         frame.add(button);
+        button.setBackground(new Color(221, 226, 206));
 
         JLabel lblFirstNum = new JLabel("Первое число");
         lblFirstNum.setBounds(30, 20, 95, 40);
