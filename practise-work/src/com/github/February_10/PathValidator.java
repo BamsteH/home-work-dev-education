@@ -7,8 +7,8 @@ public class PathValidator {
 
     public static Boolean validatorPath(String path) {
 
-        String regexp = "\\"+"?"+":"+"<"+">"+"/"+"*";
-        String regexpFst = "\\"+"?"+"<"+">"+"/"+"*";
+        String regexp = "^[^\\\\/.*?\"<>|:]*?$";
+        String regexpFst = "^[^\\\\/.*?\"<>|]*?$";
         String[] splitLast = path.split("/");
 
         Pattern pattern = Pattern.compile(regexp);
@@ -17,7 +17,7 @@ public class PathValidator {
         for (int i = 0; i < splitLast.length; i++) {
             if (i == 0) {
                 Matcher matcherFst = patternFst.matcher(splitLast[i]);
-                boolean r = matcherFst.find();
+                boolean r = matcherFst.matches();
                 if (!r) {
                     result = false;
                 }
