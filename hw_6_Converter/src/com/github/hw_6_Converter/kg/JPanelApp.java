@@ -70,15 +70,18 @@ public class JPanelApp extends JPanel {
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg) {
-                float seconds = Float.parseFloat(txt1.getText());
-                if (seconds >= 0) {
+                try{
+                    float seconds = Float.parseFloat(txt1.getText());
+
                     txt2.setText(String.valueOf(seconds * 5000 ));
                     txt_2.setText("carat");
-                } else {
-                    txt1.setText(String.valueOf(Float.parseFloat(txt1.getText()) * 3600));
+
+                } catch (NumberFormatException e){
+                    txt1.setText(String.valueOf(Float.parseFloat(txt2.getText()) * 3600));
                     txt_2.setText("carat");
                 }
-            }
+                }
+
         });
         b3.addActionListener(new ActionListener() {
             @Override
@@ -96,13 +99,16 @@ public class JPanelApp extends JPanel {
         b4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg) {
-                float seconds = Float.parseFloat(txt1.getText());
-                if (seconds >= 0) {
-                    txt2.setText(String.valueOf(seconds * 0.061));
-                    txt_2.setText("pound");
-                } else {
-                    txt1.setText(String.valueOf(Float.parseFloat(txt1.getText()) * 3600 * 24 * 7));
-                    txt_2.setText("pound");
+                if(txt1.getText() != ""){
+
+                    float seconds = Float.parseFloat(txt1.getText());
+                    if (seconds >= 0) {
+                        txt2.setText(String.valueOf(seconds * 0.061));
+                        txt_2.setText("pound");
+                    } else {
+                        txt1.setText(String.valueOf(Float.parseFloat(txt1.getText()) * 3600 * 24 * 7));
+                        txt_2.setText("pound");
+                    }
                 }
             }
         });
