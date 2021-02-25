@@ -1,6 +1,11 @@
 package com.github.OOPFirstLevel;
 
 public class ProcessorX86 extends Processor{
+
+    public ProcessorX86(double frequency, double cache, double bitCapacity){
+        super(frequency, cache, bitCapacity);
+    }
+
     @Override
     String dataProcess(String data) {
         try {
