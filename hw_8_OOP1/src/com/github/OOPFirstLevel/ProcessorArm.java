@@ -1,10 +1,6 @@
 package com.github.OOPFirstLevel;
 
 public class ProcessorArm extends Processor {
-    public ProcessorArm(double frequency, double cache, double bitCapacity){
-        super(frequency,cache,bitCapacity);
-    }
-
     @Override
     String dataProcess(String data) {
         try {
