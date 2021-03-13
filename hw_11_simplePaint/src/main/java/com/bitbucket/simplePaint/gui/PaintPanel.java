@@ -35,6 +35,10 @@ public class PaintPanel extends JPanel implements MouseMotionListener, MouseList
 
     private List<CustomLine> lines = new ArrayList<>();
 
+    public List<CustomLine> getLines() {
+        return lines;
+    }
+
     @Override
     public void paint(Graphics g) {
         super.paint(g);

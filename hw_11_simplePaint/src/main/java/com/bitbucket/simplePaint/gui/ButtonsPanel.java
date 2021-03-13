@@ -1,7 +1,11 @@
 package com.bitbucket.simplePaint.gui;
 
+import com.bitbucket.simplePaint.config.CustomLine;
+import com.bitbucket.simplePaint.formats.JSON;
+
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 public class ButtonsPanel extends JPanel {
 
@@ -22,6 +26,11 @@ public class ButtonsPanel extends JPanel {
 
         buttonClrScr.addActionListener(e -> {
             paintPanel.clear();
+        });
+
+        buttonSave.addActionListener(e -> {
+            JSON json = new JSON();
+            json.toString(paintPanel.getLines());
         });
 
         buttonColor.addActionListener(e -> {
