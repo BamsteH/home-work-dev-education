@@ -50,9 +50,6 @@ public class ArrayListZeroCapacity implements IList {
     @Override
     public void addStart(int val) {
         int size = size();
-        if (size == 0) {
-            throw new ListEmptyExceptions();
-        }
         int[] array = new int[size + 1];
         array[0] = val;
         for (int i = 0; i < size; i++) {
@@ -64,11 +61,8 @@ public class ArrayListZeroCapacity implements IList {
     @Override
     public void addEnd(int val) {
         int size = size();
-        if (size == 0) {
-            throw new ListEmptyExceptions();
-        }
         int[] array = new int[size + 1];
-        array[size + 1] = val;
+        array[size] = val;
         for (int i = 1; i < size; i++) {
             array[i] = this.array[i];
         }
@@ -101,8 +95,11 @@ public class ArrayListZeroCapacity implements IList {
 
     @Override
     public int removeStart() {
+        if (size() == 0){
+            throw new ListEmptyExceptions();
+        }
         int[] array = new int[size() - 1];
-        for (int i = 1; i < size(); i++) {
+        for (int i = 1; i < size() - 1; i++) {
             array[i] = this.array[i];
         }
         int firstNumFromArray = get(0);
@@ -113,6 +110,9 @@ public class ArrayListZeroCapacity implements IList {
     @Override
     public int removeEnd() {
         int size = size();
+        if (size == 0){
+            throw new ListEmptyExceptions();
+        }
         int[] array = new int[size - 1];
         for (int i = 0; i < size - 1; i++) {
             array[i] = this.array[i];
@@ -207,14 +207,17 @@ public class ArrayListZeroCapacity implements IList {
     @Override
     public int[] sort() {
         int size = size();
+        if (size == 0){
+            throw new ListEmptyExceptions();
+        }
         boolean end;
         do {
             end = false;
             for (int i = 0; i < size - 1; i++) {
                 if (this.array[i] > this.array[i + 1]) {
                     int tmp = this.array[i + 1];
-                    this.array[i] = this.array[i + 1];
-                    this.array[i + 1] = tmp;
+                    this.array[i + 1] = this.array[i];
+                    this.array[i] = tmp;
                     end = true;
                 }
             }

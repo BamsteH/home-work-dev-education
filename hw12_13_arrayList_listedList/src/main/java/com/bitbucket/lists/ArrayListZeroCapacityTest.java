@@ -1,8 +1,11 @@
 package com.bitbucket.lists;
 
+
+import com.bitbucket.lists.exceptions.ListEmptyExceptions;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 public class ArrayListZeroCapacityTest {
 
@@ -52,6 +55,15 @@ public class ArrayListZeroCapacityTest {
         assertArrayEquals(exp, act);
     }
 
+    @Test
+    public void clearNull() {
+        this.list.init(null);
+        this.list.clear();
+        int[] exp = {};
+        int[] act = this.list.toArray();
+        assertArrayEquals(exp, act);
+    }
+
     //=================================================
     //=================== Size ========================
     //=================================================
@@ -87,6 +99,14 @@ public class ArrayListZeroCapacityTest {
     public void sizeZero() {
         int[] array = new int[]{};
         this.list.init(array);
+        int exp = 0;
+        int act = this.list.size();
+        assertEquals(exp, act);
+    }
+
+    @Test
+    public void sizeNull() {
+        this.list.init(null);
         int exp = 0;
         int act = this.list.size();
         assertEquals(exp, act);
@@ -129,6 +149,16 @@ public class ArrayListZeroCapacityTest {
     @Test
     public void addToStartZero() {
         int[] array = new int[]{};
+        this.list.init(array);
+        this.list.addStart(1);
+        int[] exp = new int[]{1};
+        int[] act = this.list.toArray();
+        assertArrayEquals(exp, act);
+    }
+
+    @Test
+    public void addToStartNull() {
+        int[] array = null;
         this.list.init(array);
         this.list.addStart(1);
         int[] exp = new int[]{1};
@@ -180,6 +210,15 @@ public class ArrayListZeroCapacityTest {
         assertArrayEquals(exp, act);
     }
 
+    @Test
+    public void addToEndNull() {
+        this.list.init(null);
+        this.list.addEnd(1);
+        int[] exp = new int[]{1};
+        int[] act = this.list.toArray();
+        assertArrayEquals(exp, act);
+    }
+
     //=================================================
     //=================== Add by Pos =====================
     //=================================================
@@ -189,7 +228,7 @@ public class ArrayListZeroCapacityTest {
         int[] array = new int[]{1, 232, 43432, 123, 543, 4343, 123, 5644, 34, 12};
         this.list.init(array);
         this.list.addByPos(0, 12);
-        int[] exp = new int[]{12, 1, 232, 43432, 123, 543, 4343, 123, 5644, 34, 12, 1};
+        int[] exp = new int[]{12, 1, 232, 43432, 123, 543, 4343, 123, 5644, 34, 12};
         int[] act = this.list.toArray();
         assertArrayEquals(exp, act);
     }
@@ -224,7 +263,16 @@ public class ArrayListZeroCapacityTest {
         assertArrayEquals(exp, act);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
+    public void addByPoseNull() {
+        this.list.init(null);
+        this.list.addByPos(0, 12);
+        int[] exp = new int[]{12};
+        int[] act = this.list.toArray();
+        assertArrayEquals(exp, act);
+    }
+
+    @Test(expected = ListEmptyExceptions.class)
     public void addByPoseIncorrect() {
         int[] array = new int[]{1, 232};
         this.list.init(array);
@@ -262,7 +310,15 @@ public class ArrayListZeroCapacityTest {
         assertEquals(exp, act);
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = ListEmptyExceptions.class)
+    public void removeStartNull() {
+        this.list.init(null);
+        int exp = 0;
+        int act = this.list.removeStart();
+        assertEquals(exp, act);
+    }
+
+    @Test(expected = ListEmptyExceptions.class)
     public void removeStartZero() {
         int[] array = new int[]{};
         this.list.init(array);
@@ -300,12 +356,19 @@ public class ArrayListZeroCapacityTest {
         assertEquals(exp, act);
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = ListEmptyExceptions.class)
     public void removeEndZero() {
         int[] array = new int[]{};
         this.list.init(array);
         this.list.removeEnd();
     }
+
+    @Test(expected = ListEmptyExceptions.class)
+    public void removeEndNull() {
+        this.list.init(null);
+        this.list.removeEnd();
+    }
+
 
     //=================================================
     //=================== Remove by Pos =====================
@@ -338,18 +401,20 @@ public class ArrayListZeroCapacityTest {
         assertEquals(exp, act);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = ListEmptyExceptions.class)
     public void removeByPoseZero() {
         int[] array = new int[]{};
         this.list.init(array);
         this.list.removeByPos(0);
     }
 
-    /**
-     * хз какой ексепшн
-     */
+    @Test(expected = ListEmptyExceptions.class)
+    public void removeByPoseNull() {
+        this.list.init(null);
+        this.list.removeByPos(0);
+    }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = ListEmptyExceptions.class)
     public void removeByPoseIncorrect() {
         int[] array = new int[]{1, 232};
         this.list.init(array);
@@ -391,10 +456,18 @@ public class ArrayListZeroCapacityTest {
      * хз чо будет
      */
 
-    @Test
+    @Test(expected = ListEmptyExceptions.class)
     public void maxZero() {
         int[] array = new int[]{};
         this.list.init(array);
+        int exp = 0;
+        int act = this.list.max();
+        assertEquals(exp, act);
+    }
+
+    @Test(expected = ListEmptyExceptions.class)
+    public void maxNull() {
+        this.list.init(null);
         int exp = 0;
         int act = this.list.max();
         assertEquals(exp, act);
@@ -435,10 +508,18 @@ public class ArrayListZeroCapacityTest {
      * хз чо будет
      */
 
-    @Test
+    @Test (expected = ListEmptyExceptions.class)
     public void minZero() {
         int[] array = new int[]{};
         this.list.init(array);
+        int exp = 0;
+        int act = this.list.min();
+        assertEquals(exp, act);
+    }
+
+    @Test (expected = ListEmptyExceptions.class)
+    public void minNull() {
+        this.list.init(null);
         int exp = 0;
         int act = this.list.min();
         assertEquals(exp, act);
@@ -479,13 +560,17 @@ public class ArrayListZeroCapacityTest {
      * хз чо будет
      */
 
-    @Test
+    @Test(expected = ListEmptyExceptions.class)
     public void maxPosZero() {
         int[] array = new int[]{};
         this.list.init(array);
-        int exp = 0;
         int act = this.list.maxPos();
-        assertEquals(exp, act);
+    }
+
+    @Test(expected = ListEmptyExceptions.class)
+    public void maxPosNull() {
+        this.list.init(null);
+        int act = this.list.maxPos();
     }
 
     //=================================================
@@ -518,17 +603,18 @@ public class ArrayListZeroCapacityTest {
         int act = this.list.minPos();
         assertEquals(exp, act);
     }
-
-    /**
-     * хз чо будет
-     */
-    @Test
+    
+    @Test(expected = ListEmptyExceptions.class)
     public void minPosZero() {
         int[] array = new int[]{};
         this.list.init(array);
-        int exp = 0;
         int act = this.list.minPos();
-        assertEquals(exp, act);
+    }
+
+    @Test(expected = ListEmptyExceptions.class)
+    public void minPosNull() {
+        this.list.init(null);
+        int act = this.list.minPos();
     }
 
     //=================================================
@@ -562,10 +648,16 @@ public class ArrayListZeroCapacityTest {
         assertArrayEquals(exp, act);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = ListEmptyExceptions.class)
     public void sortZero() {
         int[] array = new int[]{};
         this.list.init(array);
+        this.list.sort();
+    }
+
+    @Test(expected = ListEmptyExceptions.class)
+    public void sortNull() {
+        this.list.init(null);
         this.list.sort();
     }
 
@@ -609,6 +701,12 @@ public class ArrayListZeroCapacityTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
+    public void getNull() {
+        this.list.init(null);
+        this.list.get(0);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
     public void getIncorrect() {
         int[] array = new int[]{1, 232, 43432, 123, 543, 4343, 123, 5644, 34, 12};
         this.list.init(array);
@@ -646,13 +744,17 @@ public class ArrayListZeroCapacityTest {
         assertArrayEquals(exp, act);
     }
 
-    @Test
+    @Test(expected = ListEmptyExceptions.class)
     public void halfReversZero() {
         int[] array = new int[]{};
         this.list.init(array);
-        int[] exp = new int[]{};
         int[] act = this.list.halfRevers();
-        assertArrayEquals(exp, act);
+    }
+
+    @Test(expected = ListEmptyExceptions.class)
+    public void halfReversNull() {
+        this.list.init(null);
+        int[] act = this.list.halfRevers();
     }
 
     //=================================================
@@ -694,6 +796,14 @@ public class ArrayListZeroCapacityTest {
         int[] act = this.list.revers();
         assertArrayEquals(exp, act);
     }
+    
+    @Test
+    public void reversNull() {
+        this.list.init(null);
+        int[] exp = new int[]{};
+        int[] act = this.list.revers();
+        assertArrayEquals(exp, act);
+    }
 
     //=================================================
     //=================== set =====================
@@ -730,14 +840,20 @@ public class ArrayListZeroCapacityTest {
     }
 
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = ListEmptyExceptions.class)
     public void setZero() {
         int[] array = new int[]{};
         this.list.init(array);
         this.list.set(0,10);
     }
+    
+    @Test(expected = ListEmptyExceptions.class)
+    public void setNull() {
+        this.list.init(null);
+        this.list.set(0,10);
+    }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = ListEmptyExceptions.class)
     public void setIncorrect() {
         int[] array = new int[]{1, 232, 43432, 123, 543, 4343, 123, 5644, 34, 12};
         this.list.init(array);
