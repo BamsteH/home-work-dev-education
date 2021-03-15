@@ -508,7 +508,7 @@ public class ArrayListZeroCapacityTest {
      * хз чо будет
      */
 
-    @Test (expected = ListEmptyExceptions.class)
+    @Test(expected = ListEmptyExceptions.class)
     public void minZero() {
         int[] array = new int[]{};
         this.list.init(array);
@@ -517,7 +517,7 @@ public class ArrayListZeroCapacityTest {
         assertEquals(exp, act);
     }
 
-    @Test (expected = ListEmptyExceptions.class)
+    @Test(expected = ListEmptyExceptions.class)
     public void minNull() {
         this.list.init(null);
         int exp = 0;
@@ -603,7 +603,7 @@ public class ArrayListZeroCapacityTest {
         int act = this.list.minPos();
         assertEquals(exp, act);
     }
-    
+
     @Test(expected = ListEmptyExceptions.class)
     public void minPosZero() {
         int[] array = new int[]{};
@@ -721,7 +721,16 @@ public class ArrayListZeroCapacityTest {
     public void halfReversMany() {
         int[] array = new int[]{1, 232, 43432, 123, 543, 4343, 123, 5644, 34, 12};
         this.list.init(array);
-        int[] exp = new int[]{4343, 123, 5644, 34, 12, 1, 1, 232, 43432, 123, 543};
+        int[] exp = new int[]{4343, 123, 5644, 34, 12, 1, 232, 43432, 123, 543};
+        int[] act = this.list.halfRevers();
+        assertArrayEquals(exp, act);
+    }
+
+    @Test
+    public void halfReversEven() {
+        int[] array = new int[]{1, 232, 43432, 123, 543, 4343, 123, 5644, 34, 12, 10};
+        this.list.init(array);
+        int[] exp = new int[]{4343, 123, 5644, 34, 12, 10, 1, 232, 43432, 123, 543};
         int[] act = this.list.halfRevers();
         assertArrayEquals(exp, act);
     }
@@ -788,21 +797,19 @@ public class ArrayListZeroCapacityTest {
         assertArrayEquals(exp, act);
     }
 
-    @Test
+    @Test(expected = ListEmptyExceptions.class)
     public void reversZero() {
         int[] array = new int[]{};
         this.list.init(array);
         int[] exp = new int[]{};
         int[] act = this.list.revers();
-        assertArrayEquals(exp, act);
     }
-    
-    @Test
+
+    @Test(expected = ListEmptyExceptions.class)
     public void reversNull() {
         this.list.init(null);
         int[] exp = new int[]{};
         int[] act = this.list.revers();
-        assertArrayEquals(exp, act);
     }
 
     //=================================================
@@ -813,30 +820,30 @@ public class ArrayListZeroCapacityTest {
     public void setMany() {
         int[] array = new int[]{1, 232, 43432, 123, 543, 4343, 123, 5644, 34, 12};
         this.list.init(array);
-        this.list.set(3,1000);
+        this.list.set(3, 1000);
         int[] exp = {1, 232, 43432, 1000, 543, 4343, 123, 5644, 34, 12};
         int[] act = this.list.toArray();
-        assertEquals(exp, act);
+        assertArrayEquals(exp, act);
     }
 
     @Test
     public void setTwo() {
-        int[] array = new int[]{1,232};
+        int[] array = new int[]{1, 232};
         this.list.init(array);
-        this.list.set(1,1000);
+        this.list.set(1, 1000);
         int[] exp = {1, 1000};
         int[] act = this.list.toArray();
-        assertEquals(exp, act);
+        assertArrayEquals(exp, act);
     }
 
     @Test
     public void setOne() {
         int[] array = new int[]{1};
         this.list.init(array);
-        this.list.set(0,1000);
+        this.list.set(0, 1000);
         int[] exp = {1000};
         int[] act = this.list.toArray();
-        assertEquals(exp, act);
+        assertArrayEquals(exp, act);
     }
 
 
@@ -844,19 +851,19 @@ public class ArrayListZeroCapacityTest {
     public void setZero() {
         int[] array = new int[]{};
         this.list.init(array);
-        this.list.set(0,10);
+        this.list.set(0, 10);
     }
-    
+
     @Test(expected = ListEmptyExceptions.class)
     public void setNull() {
         this.list.init(null);
-        this.list.set(0,10);
+        this.list.set(0, 10);
     }
 
     @Test(expected = ListEmptyExceptions.class)
     public void setIncorrect() {
         int[] array = new int[]{1, 232, 43432, 123, 543, 4343, 123, 5644, 34, 12};
         this.list.init(array);
-        this.list.set(10,1);
+        this.list.set(10, 1);
     }
 }

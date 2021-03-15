@@ -63,7 +63,7 @@ public class ArrayListZeroCapacity implements IList {
         int size = size();
         int[] array = new int[size + 1];
         array[size] = val;
-        for (int i = 1; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             array[i] = this.array[i];
         }
         this.array = array;
@@ -95,7 +95,7 @@ public class ArrayListZeroCapacity implements IList {
 
     @Override
     public int removeStart() {
-        if (size() == 0){
+        if (size() == 0) {
             throw new ListEmptyExceptions();
         }
         int[] array = new int[size() - 1];
@@ -110,7 +110,7 @@ public class ArrayListZeroCapacity implements IList {
     @Override
     public int removeEnd() {
         int size = size();
-        if (size == 0){
+        if (size == 0) {
             throw new ListEmptyExceptions();
         }
         int[] array = new int[size - 1];
@@ -207,7 +207,7 @@ public class ArrayListZeroCapacity implements IList {
     @Override
     public int[] sort() {
         int size = size();
-        if (size == 0){
+        if (size == 0) {
             throw new ListEmptyExceptions();
         }
         boolean end;
@@ -234,26 +234,42 @@ public class ArrayListZeroCapacity implements IList {
     @Override
     public int[] halfRevers() {
         int size = size();
-        if (size == 0){
+        if (size == 0) {
             throw new ListEmptyExceptions();
         }
-        if (size % 2 == 1){
-            int[] scnArr = new int[(size / 2) + 1];
+        int halfCell = (size / 2) + (size % 2);
+        int[] cloneArray = new int[size];
+        for (int i = 0; i < size; i++) {
+            if (i < halfCell) {
+                cloneArray[i] = this.array[(size / 2) + i];
+            } else {
+                cloneArray[i] = this.array[i - halfCell];
+            }
         }
-        int[] fstArr = new int[size / 2];
-
-
-        return new int[0];
+        this.array = cloneArray;
+        return this.array;
     }
 
     @Override
     public int[] revers() {
-        return new int[0];
+        int size = size();
+        if (size == 0) {
+            throw new ListEmptyExceptions();
+        }
+        int[] cloneArray = new int[size];
+        for (int i = 0; i < size; i++) {
+            cloneArray[i] = this.array[size - i - 1];
+        }
+        this.array = cloneArray;
+        return this.array;
     }
 
     @Override
     public void set(int pos, int val) {
-
+        if (size() <= pos) {
+            throw new ListEmptyExceptions();
+        }
+        this.array[pos] = val;
     }
 
 }
