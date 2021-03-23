@@ -1,4 +1,5 @@
 // Swing пример использования панели с вкладками JTabbedPane
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -8,16 +9,15 @@ import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
 
-public class TabbedPaneTest extends JFrame
-{
-    private  final  Color[]  colors = {Color.cyan, Color.orange, Color.magenta, Color.blue,
-            Color.red , Color.green , Color.yellow , Color.pink };
-    private  final  String   TEMPL_label   = "Метка %d";
-    private  final  String   TEMPL_dynamic = "Динамическая метка %d";
-    private  final  String   TEMPL_button  = "Кнопка %d";
-    private  final  String   TEMPL_tab     = "Вкладка %d";
-    public TabbedPaneTest()
-    {
+public class TabbedPaneTest extends JFrame {
+    private final Color[] colors = {Color.cyan, Color.orange, Color.magenta, Color.blue,
+            Color.red, Color.green, Color.yellow, Color.pink};
+    private final String TEMPL_label = "Метка %d";
+    private final String TEMPL_dynamic = "Динамическая метка %d";
+    private final String TEMPL_button = "Кнопка %d";
+    private final String TEMPL_tab = "Вкладка %d";
+
+    public TabbedPaneTest() {
         super("Пример панели с вкладками JTabbedPane");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         // Левая панель с вкладками
@@ -33,7 +33,7 @@ public class TabbedPaneTest extends JFrame
             // Добавление вкладки
             tabsLeft.addTab(String.format(TEMPL_tab, i), panel);
             // Подключение мнемоники
-            tabsLeft.setMnemonicAt(i-1, String.valueOf(i).charAt(0));
+            tabsLeft.setMnemonicAt(i - 1, String.valueOf(i).charAt(0));
         }
 //        // Подключение слушателя событий
 //        tabsLeft.addChangeListener(new ChangeListener() {
@@ -65,7 +65,7 @@ public class TabbedPaneTest extends JFrame
             // Создание кнопки в панели
             panel.add(new JButton(String.format(TEMPL_button, i)));
             // Добавление панели во вкладку 
-            tabsRight.addTab("<html><i>Вкладка №" + i,
+            tabsRight.addTab("кнопка" + i,
                     new ImageIcon("images/copy.png"), panel, "Нажмите " + i);
         }
         // Определение табличного расположения компонентов
@@ -77,6 +77,7 @@ public class TabbedPaneTest extends JFrame
         setSize(600, 250);
         setVisible(true);
     }
+
     public static void main(String[] args) {
         new TabbedPaneTest();
     }

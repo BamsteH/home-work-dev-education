@@ -53,7 +53,7 @@ public class LinkedListOnlyNext implements IList {
         int count = 0;
         int[] array = new int[size];
         Node tmp = this.root;
-        while (tmp != null) {
+        while (tmp.next != null) {
             tmp = tmp.next;
             array[count++] = tmp.value;
         }
@@ -152,7 +152,7 @@ public class LinkedListOnlyNext implements IList {
             throw new ListEmptyExceptions();
         }
         int maxValue = tmp.value;
-        while (tmp != null) {
+        while (tmp.next != null) {
             if (tmp.next.value > maxValue) {
                 maxValue = tmp.next.value;
             }
@@ -168,7 +168,7 @@ public class LinkedListOnlyNext implements IList {
             throw new ListEmptyExceptions();
         }
         int minValue = tmp.value;
-        while (tmp != null) {
+        while (tmp.next != null) {
             if (tmp.next.value < minValue) {
                 minValue = tmp.next.value;
             }
@@ -186,7 +186,7 @@ public class LinkedListOnlyNext implements IList {
         int maxValue = tmp.value;
         int maxValuePos = 0;
         int pos = 0;
-        while (tmp != null) {
+        while (tmp.next != null) {
             if (tmp.next.value > maxValue) {
                 maxValue = tmp.next.value;
                 maxValuePos = pos;
@@ -308,7 +308,7 @@ public class LinkedListOnlyNext implements IList {
     @Override
     public void set(int pos, int val) {
         Node tmp = this.root;
-        for (int i = 0; i < pos; i++) {
+        for (int i = 0; i <= pos; i++) {
             tmp = tmp.next;
         }
         tmp.value = val;

@@ -65,6 +65,7 @@ public class ArrayListTenCapacity implements IList {
     @Override
     public void addByPos(int pos, int val) {
         init(this.array);
+        int[] result = new int[this.index + 1];
         int j = 0;
         if (pos > this.index) {
             throw new ListEmptyExceptions();
@@ -75,10 +76,14 @@ public class ArrayListTenCapacity implements IList {
         } else {
             for (int i = 0; i <= this.index; i++) {
                 if (i == pos) {
-                    this.array[j] = val;
+                    result[i] = val;
+                    j++;
+                } else {
+                    result[i] = this.array[i-j];
                 }
             }
         }
+        this.array = result;
         this.index++;
     }
 
@@ -86,7 +91,7 @@ public class ArrayListTenCapacity implements IList {
     @Override
     public int removeStart() {
         init(this.array);
-        int result = this.array[this.index - 1];
+        int result = this.array[0];
         int[] newArray = new int[this.index];
         for (int i = 0; i < this.index - 1; i++) {
                 newArray[i] = this.array[i];
@@ -98,12 +103,36 @@ public class ArrayListTenCapacity implements IList {
 
     @Override
     public int removeEnd() {
-        return 0;
+        int size = size();
+        int removedVal = this.array[size - 1];
+        int[] result = new int[size - 1];
+        for (int i = 0; i < this.index - 1; i++) {
+            result[i] = this.array[i];
+        }
+        this.array = result;
+        this.index--;
+        return removedVal;
     }
 
     @Override
     public int removeByPos(int pos) {
-        return 0;
+        int size = size();
+        int j = 0;
+        if(pos >= size){
+            throw new ListEmptyExceptions();
+        }
+        int removedVal = this.array[pos];
+        int[] result = new int[size - 1];
+        for (int i = 0; i < this.index; i++) {
+            if (i == pos){
+                j++;
+            } else {
+                result[i-j] = this.array[i];
+            }
+        }
+        this.array = result;
+        this.index--;
+        return removedVal;
     }
 
     @Override

@@ -3,13 +3,19 @@ package com.bitbucket.lists;
 
 import com.bitbucket.lists.exceptions.ListEmptyExceptions;
 import org.junit.Test;
+import org.junit.runners.Parameterized;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class ArrayListZeroCapacityTest {
 
-    private final IList list = new ArrayListZeroCapacity();
+    private final IList list = new ArrayListTenCapacity();
+
+
 
     //=================================================
     //=================== Clean ========================
