@@ -53,9 +53,10 @@ public class LinkedListOnlyNext implements IList {
         int count = 0;
         int[] array = new int[size];
         Node tmp = this.root;
-        while (tmp.next != null) {
+        while (tmp != null) {
+            array[count] = tmp.value;
             tmp = tmp.next;
-            array[count++] = tmp.value;
+            count++;
         }
         return array;
     }
@@ -186,9 +187,9 @@ public class LinkedListOnlyNext implements IList {
         int maxValue = tmp.value;
         int maxValuePos = 0;
         int pos = 0;
-        while (tmp.next != null) {
-            if (tmp.next.value > maxValue) {
-                maxValue = tmp.next.value;
+        while (tmp != null) {
+            if (tmp.value > maxValue) {
+                maxValue = tmp.value;
                 maxValuePos = pos;
             }
             tmp = tmp.next;
@@ -207,8 +208,8 @@ public class LinkedListOnlyNext implements IList {
         int minValuePos = 0;
         int pos = 0;
         while (tmp != null) {
-            if (tmp.next.value < minValue) {
-                minValue = tmp.next.value;
+            if (tmp.value < minValue) {
+                minValue = tmp.value;
                 minValuePos = pos;
             }
             tmp = tmp.next;
@@ -268,17 +269,18 @@ public class LinkedListOnlyNext implements IList {
     @Override
     public int[] halfRevers() {
         Node tmp = this.root;
-        if (tmp == null){
+        Node last = this.root;
+        if (tmp == null) {
             throw new ListEmptyExceptions();
         }
         int size = size();
-        if (size < 2){
+        if (size < 2) {
             return toArray();
         }
         for (int i = 0; i < size; i++) {
             tmp = tmp.next;
         }
-        tmp.next = this.root;
+        tmp.next = last;
         tmp = tmp.next;
         int halfSize = (size / 2) + (size % 2) - 1;
         for (int i = 0; i < halfSize; i++) {
@@ -307,8 +309,14 @@ public class LinkedListOnlyNext implements IList {
 
     @Override
     public void set(int pos, int val) {
+        if (this.root == null) {
+            throw new ListEmptyExceptions();
+        }
+        if (size() <= pos){
+            throw new ListEmptyExceptions();
+        }
         Node tmp = this.root;
-        for (int i = 0; i <= pos; i++) {
+        for (int i = 0; i < pos; i++) {
             tmp = tmp.next;
         }
         tmp.value = val;

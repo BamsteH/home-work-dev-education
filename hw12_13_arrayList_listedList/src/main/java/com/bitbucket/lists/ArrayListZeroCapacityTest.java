@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 
 public class ArrayListZeroCapacityTest {
 
-    private final IList list = new ArrayListTenCapacity();
+    private final IList list = new LinkedListOnlyNext();
 
 
 
@@ -136,6 +136,7 @@ public class ArrayListZeroCapacityTest {
     public void addToStartTwo() {
         int[] array = new int[]{1, 232};
         this.list.init(array);
+        int[] what = this.list.toArray();
         this.list.addStart(1);
         int[] exp = new int[]{1, 1, 232};
         int[] act = this.list.toArray();
@@ -699,20 +700,20 @@ public class ArrayListZeroCapacityTest {
     }
 
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = ListEmptyExceptions.class)
     public void getZero() {
         int[] array = new int[]{};
         this.list.init(array);
         this.list.get(0);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = ListEmptyExceptions.class)
     public void getNull() {
         this.list.init(null);
         this.list.get(0);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = ListEmptyExceptions.class)
     public void getIncorrect() {
         int[] array = new int[]{1, 232, 43432, 123, 543, 4343, 123, 5644, 34, 12};
         this.list.init(array);
