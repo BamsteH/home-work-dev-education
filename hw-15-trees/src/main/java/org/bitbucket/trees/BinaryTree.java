@@ -1,7 +1,9 @@
 package org.bitbucket.trees;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class BinaryTree implements ITree {
 
@@ -25,6 +27,28 @@ public class BinaryTree implements ITree {
             return value == node.value && Objects.equals(left, node.left) && Objects.equals(right, node.right);
         }
 
+        void add(int value){
+            if(value < this.value){
+                if (this.left == null){
+                    this.left = new Node(value);
+                } else {
+                    this.left.add(value);
+                }
+            } else if (value > this.value){
+                if (this.right == null){
+                    this.right = new Node(value);
+                } else {
+                    this.right.add(value);
+                }
+            } else {
+                throw new IllegalArgumentException();
+            }
+        }
+
+        void width(int counterHeight){
+
+        }
+
         @Override
         public int hashCode() {
             return Objects.hash(value, left, right);
@@ -32,6 +56,7 @@ public class BinaryTree implements ITree {
     }
 
     Node root;
+    int size;
 
     public BinaryTree(int[] array) {
         this.init(array);
@@ -48,7 +73,8 @@ public class BinaryTree implements ITree {
 
     @Override
     public void clear() {
-
+        this.root = null;
+        this.size = 0;
     }
 
     @Override
@@ -109,4 +135,13 @@ public class BinaryTree implements ITree {
         return Objects.hash(root);
     }
 
+    private boolean hasRepeatingElements(int[] array) {
+        Set set = new HashSet();
+        for (int j : array) {
+            if (!set.add(j)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
