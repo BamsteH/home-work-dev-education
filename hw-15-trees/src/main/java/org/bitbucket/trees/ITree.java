@@ -1,3 +1,5 @@
+package org.bitbucket.trees;
+
 public interface ITree {
 
     void init(int[] array);

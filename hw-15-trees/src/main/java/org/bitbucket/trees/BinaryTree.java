@@ -1,6 +1,9 @@
+package org.bitbucket.trees;
+
+import java.util.Arrays;
 import java.util.Objects;
 
-public class AVLTree implements ITree {
+public class BinaryTree implements ITree {
 
     private static class Node {
 
@@ -29,6 +32,14 @@ public class AVLTree implements ITree {
     }
 
     Node root;
+
+    public BinaryTree(int[] array) {
+        this.init(array);
+    }
+
+    public BinaryTree() {
+        this.init(new int[0]);
+    }
 
     @Override
     public void init(int[] array) {
@@ -89,8 +100,8 @@ public class AVLTree implements ITree {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AVLTree that = (AVLTree) o;
-        return Objects.equals(root, that.root);
+        BinaryTree that = (BinaryTree) o;
+        return Arrays.equals(this.toArray(), that.toArray());
     }
 
     @Override

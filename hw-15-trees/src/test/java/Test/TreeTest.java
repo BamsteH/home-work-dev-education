@@ -1,3 +1,8 @@
+package Test;
+
+import org.bitbucket.trees.AVLTree;
+import org.bitbucket.trees.BinaryTree;
+import org.bitbucket.trees.ITree;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +29,7 @@ public class TreeTest {
     }
 
     @Parameterized.Parameters(name = "{index} {0}")
-    public static Collection<Object> instances(){
+    public static Collection<Object> instances() {
         return Arrays.asList(new Object[][]{
                 {"Binary tree", new BinaryTree(), new BinaryTree()},
                 {"AVL tree", new AVLTree(), new AVLTree()}
@@ -32,7 +37,7 @@ public class TreeTest {
     }
 
     @Before
-    public void setUp(){
+    public void setUp() {
         actualTree.clear();
         expectedTree.clear();
     }
@@ -42,12 +47,12 @@ public class TreeTest {
     //=================================================
 
     @Test(expected = NullPointerException.class)
-    public void initNull(){
+    public void initNull() {
         actualTree.init(null);
     }
 
     @Test
-    public void initZero(){
+    public void initZero() {
         int[] array = new int[0];
         actualTree.init(array);
         int[] exp = {};
@@ -56,7 +61,7 @@ public class TreeTest {
     }
 
     @Test
-    public void initOne(){
+    public void initOne() {
         int[] array = {0};
         actualTree.init(array);
         int[] exp = {0};
@@ -65,7 +70,7 @@ public class TreeTest {
     }
 
     @Test
-    public void initTwo(){
+    public void initTwo() {
         int[] array = {1, 0};
         actualTree.init(array);
         int[] exp = {0, 1};
@@ -74,7 +79,7 @@ public class TreeTest {
     }
 
     @Test
-    public void initThree(){
+    public void initThree() {
         int[] array = {1, 0, 2};
         actualTree.init(array);
         int[] exp = {0, 1, 2};
@@ -83,19 +88,10 @@ public class TreeTest {
     }
 
     @Test
-    public void initMany(){
+    public void initMany() {
         int[] array = {1, 0, 2, 3, 5, 4, 8, 6, 5, 9};
         actualTree.init(array);
-        int[] exp = {0, 1, 2, 3, 4, 5, 6, 7 ,8 ,9};
-        int[] act = actualTree.toArray();
-        Assert.assertArrayEquals(exp, act);
-    }
-
-    @Test
-    public void initManySame(){
-        int[] array = {0, 1, 2, 0, 1, 0, 2, 1, 1, 2, 0, 2};
-        actualTree.init(array);
-        int[] exp = {0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2};
+        int[] exp = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         int[] act = actualTree.toArray();
         Assert.assertArrayEquals(exp, act);
     }
@@ -105,7 +101,7 @@ public class TreeTest {
     //=================================================
 
     @Test
-    public void clearZero(){
+    public void clearZero() {
         int[] array = new int[0];
         actualTree.init(array);
         actualTree.clear();
@@ -114,7 +110,7 @@ public class TreeTest {
     }
 
     @Test
-    public void clearOne(){
+    public void clearOne() {
         int[] array = {0};
         actualTree.init(array);
         actualTree.clear();
@@ -123,7 +119,7 @@ public class TreeTest {
     }
 
     @Test
-    public void clearTwo(){
+    public void clearTwo() {
         int[] array = {1, 0};
         actualTree.init(array);
         actualTree.clear();
@@ -133,7 +129,7 @@ public class TreeTest {
     }
 
     @Test
-    public void clearThree(){
+    public void clearThree() {
         int[] array = {1, 0, 2};
         actualTree.init(array);
         actualTree.clear();
@@ -143,7 +139,7 @@ public class TreeTest {
     }
 
     @Test
-    public void clearMany(){
+    public void clearMany() {
         int[] array = {1, 0, 2, 3, 5, 4, 8, 6, 5, 9};
         actualTree.init(array);
         actualTree.clear();
@@ -156,7 +152,7 @@ public class TreeTest {
     //=================================================
 
     @Test
-    public void sizeZero(){
+    public void sizeZero() {
         int[] array = new int[0];
         actualTree.init(array);
         int exp = 0;
@@ -165,7 +161,7 @@ public class TreeTest {
     }
 
     @Test
-    public void sizeOne(){
+    public void sizeOne() {
         int[] array = {0};
         actualTree.init(array);
         int exp = 1;
@@ -174,7 +170,7 @@ public class TreeTest {
     }
 
     @Test
-    public void sizeTwo(){
+    public void sizeTwo() {
         int[] array = {1, 0};
         actualTree.init(array);
         int exp = 2;
@@ -183,7 +179,7 @@ public class TreeTest {
     }
 
     @Test
-    public void sizeThree(){
+    public void sizeThree() {
         int[] array = {1, 0, 2};
         actualTree.init(array);
         int exp = 3;
@@ -192,7 +188,7 @@ public class TreeTest {
     }
 
     @Test
-    public void sizeMany(){
+    public void sizeMany() {
         int[] array = {1, 0, 2, 3, 5, 4, 8, 6, 5, 9};
         actualTree.init(array);
         int exp = 10;
@@ -205,7 +201,7 @@ public class TreeTest {
     //=================================================
 
     @Test
-    public void addZero(){
+    public void addZero() {
         int[] initialArray = {};
         int[] expectedArray = {0};
         actualTree.init(initialArray);
@@ -215,7 +211,7 @@ public class TreeTest {
     }
 
     @Test
-    public void addOne(){
+    public void addOne() {
         int[] initialArray = {0};
         int[] expectedArray = {0, 1};
         actualTree.init(initialArray);
@@ -225,7 +221,7 @@ public class TreeTest {
     }
 
     @Test
-    public void addOneSame(){
+    public void addOneSame() {
         int[] initialArray = {0};
         int[] expectedArray = {0, 0};
         actualTree.init(initialArray);
@@ -235,7 +231,7 @@ public class TreeTest {
     }
 
     @Test
-    public void addTwo(){
+    public void addTwo() {
         int[] initialArray = {0, 1};
         int[] expectedArray = {0, 1, 2};
         actualTree.init(initialArray);
@@ -245,7 +241,7 @@ public class TreeTest {
     }
 
     @Test
-    public void addTwoSame(){
+    public void addTwoSame() {
         int[] initialArray = {0, 0};
         int[] expectedArray = {0, 0, 0};
         actualTree.init(initialArray);
@@ -255,7 +251,7 @@ public class TreeTest {
     }
 
     @Test
-    public void addThree(){
+    public void addThree() {
         int[] initialArray = {0, 1, 2};
         int[] expectedArray = {0, 1, 2, 3};
         actualTree.init(initialArray);
@@ -265,7 +261,7 @@ public class TreeTest {
     }
 
     @Test
-    public void addThreeSame(){
+    public void addThreeSame() {
         int[] initialArray = {0, 0, 0};
         int[] expectedArray = {0, 0, 0, 0};
         actualTree.init(initialArray);
@@ -275,7 +271,7 @@ public class TreeTest {
     }
 
     @Test
-    public void addMany(){
+    public void addMany() {
         int[] initialArray = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         int[] expectedArray = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         actualTree.init(initialArray);
@@ -285,7 +281,7 @@ public class TreeTest {
     }
 
     @Test
-    public void addManySame(){
+    public void addManySame() {
         int[] initialArray = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         int[] expectedArray = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         actualTree.init(initialArray);
@@ -295,7 +291,7 @@ public class TreeTest {
     }
 
     @Test
-    public void addNegative(){
+    public void addNegative() {
         int[] initialArray = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         int[] expectedArray = {-10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         actualTree.init(initialArray);
@@ -309,14 +305,14 @@ public class TreeTest {
     //=================================================
 
     @Test(expected = NoSuchElementException.class)
-    public void deleteZero(){
+    public void deleteZero() {
         int[] initialArray = {};
         actualTree.init(initialArray);
         actualTree.delete(10);
     }
 
     @Test
-    public void deleteOne(){
+    public void deleteOne() {
         int[] initialArray = {0};
         int[] expectedArray = {};
         int elementToDelete = 0;
@@ -327,7 +323,7 @@ public class TreeTest {
     }
 
     @Test(expected = NoSuchElementException.class)
-    public void deleteNoSuchElementOne(){
+    public void deleteNoSuchElementOne() {
         int[] initialArray = {0};
         int elementToDelete = 2;
         actualTree.init(initialArray);
@@ -335,7 +331,7 @@ public class TreeTest {
     }
 
     @Test
-    public void deleteTwoFirst(){
+    public void deleteTwoFirst() {
         int[] initialArray = {0, 1};
         int[] expectedArray = {1};
         int elementToDelete = 0;
@@ -346,7 +342,7 @@ public class TreeTest {
     }
 
     @Test
-    public void deleteTwoSecond(){
+    public void deleteTwoSecond() {
         int[] initialArray = {0, 1};
         int[] expectedArray = {0};
         int elementToDelete = 1;
@@ -356,19 +352,8 @@ public class TreeTest {
         Assert.assertEquals(expectedTree, actualTree);
     }
 
-    @Test
-    public void deleteTwoSame(){
-        int[] initialArray = {0, 0};
-        int[] expectedArray = {};
-        int elementToDelete = 0;
-        actualTree.init(initialArray);
-        actualTree.delete(elementToDelete);
-        expectedTree.init(expectedArray);
-        Assert.assertEquals(expectedTree, actualTree);
-    }
-
     @Test(expected = NoSuchElementException.class)
-    public void deleteTwoNoSuchElement(){
+    public void deleteTwoNoSuchElement() {
         int[] initialArray = {0, 1};
         int elementToDelete = 10;
         actualTree.init(initialArray);
@@ -376,7 +361,7 @@ public class TreeTest {
     }
 
     @Test
-    public void deleteThreeFirst(){
+    public void deleteThreeFirst() {
         int[] initialArray = {0, 1, 2};
         int[] expectedArray = {1, 2};
         int elementToDelete = 0;
@@ -387,7 +372,7 @@ public class TreeTest {
     }
 
     @Test
-    public void deleteThreeSecond(){
+    public void deleteThreeSecond() {
         int[] initialArray = {0, 1, 2};
         int[] expectedArray = {0, 2};
         int elementToDelete = 1;
@@ -398,7 +383,7 @@ public class TreeTest {
     }
 
     @Test
-    public void deleteThreeThird(){
+    public void deleteThreeThird() {
         int[] initialArray = {0, 1, 2};
         int[] expectedArray = {0, 1};
         int elementToDelete = 2;
@@ -409,9 +394,9 @@ public class TreeTest {
     }
 
     @Test
-    public void deleteThreeSameTwo(){
-        int[] initialArray = {0, 0, 2};
-        int[] expectedArray = {2};
+    public void deleteThreeSameTwo() {
+        int[] initialArray = {0, 5, 2};
+        int[] expectedArray = {5, 2};
         int elementToDelete = 0;
         actualTree.init(initialArray);
         actualTree.delete(elementToDelete);
@@ -420,18 +405,7 @@ public class TreeTest {
     }
 
     @Test
-    public void deleteThreeSameThree(){
-        int[] initialArray = {0, 0, 0};
-        int[] expectedArray = {};
-        int elementToDelete = 0;
-        actualTree.init(initialArray);
-        actualTree.delete(elementToDelete);
-        expectedTree.init(expectedArray);
-        Assert.assertEquals(expectedTree, actualTree);
-    }
-
-    @Test
-    public void deleteManyFirst(){
+    public void deleteManyFirst() {
         int[] initialArray = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         int[] expectedArray = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         int elementToDelete = 0;
@@ -442,7 +416,7 @@ public class TreeTest {
     }
 
     @Test
-    public void deleteManyFirstHalf(){
+    public void deleteManyFirstHalf() {
         int[] initialArray = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         int[] expectedArray = {0, 1, 3, 4, 5, 6, 7, 8, 9};
         int elementToDelete = 2;
@@ -453,7 +427,7 @@ public class TreeTest {
     }
 
     @Test
-    public void deleteManyMiddle(){
+    public void deleteManyMiddle() {
         int[] initialArray = {0, 1, 2, 3, 4, 5, 6, 7, 8};
         int[] expectedArray = {0, 1, 2, 3, 5, 6, 7, 8};
         int elementToDelete = 4;
@@ -464,7 +438,7 @@ public class TreeTest {
     }
 
     @Test
-    public void deleteManySecondHalf(){
+    public void deleteManySecondHalf() {
         int[] initialArray = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         int[] expectedArray = {0, 1, 2, 3, 4, 5, 6, 8, 9};
         int elementToDelete = 7;
@@ -475,9 +449,9 @@ public class TreeTest {
     }
 
     @Test
-    public void deleteManyLast(){
+    public void deleteManyLast() {
         int[] initialArray = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int[] expectedArray = {0, 1, 2, 3, 4, 5, 7, 6, 8};
+        int[] expectedArray = {0, 1, 2, 3, 4, 5, 6, 7, 8};
         int elementToDelete = 9;
         actualTree.init(initialArray);
         actualTree.delete(elementToDelete);
@@ -485,4 +459,11 @@ public class TreeTest {
         Assert.assertEquals(expectedTree, actualTree);
     }
 
+    @Test(expected = NoSuchElementException.class)
+    public void deleteNoSuchElementInMany() {
+        int[] initialArray = {0, 1, 2, 3, 4, 5, 0, 7, 8, 0};
+        int elementToDelete = 9;
+        actualTree.init(initialArray);
+        actualTree.delete(elementToDelete);
+    }
 }
