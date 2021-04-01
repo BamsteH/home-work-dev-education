@@ -1,9 +1,6 @@
 package org.bitbucket.trees;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class BinaryTree implements ITree {
 
@@ -27,15 +24,15 @@ public class BinaryTree implements ITree {
             return value == node.value && Objects.equals(left, node.left) && Objects.equals(right, node.right);
         }
 
-        void add(int value){
-            if(value < this.value){
-                if (this.left == null){
+        void add(int value) {
+            if (value < this.value) {
+                if (this.left == null) {
                     this.left = new Node(value);
                 } else {
                     this.left.add(value);
                 }
-            } else if (value > this.value){
-                if (this.right == null){
+            } else if (value > this.value) {
+                if (this.right == null) {
                     this.right = new Node(value);
                 } else {
                     this.right.add(value);
@@ -45,7 +42,62 @@ public class BinaryTree implements ITree {
             }
         }
 
-        void width(int counterHeight){
+        void width(Counter counterHeight, List<Integer> array) {
+            counterHeight.counter++;
+            if (this.left != null) {
+                this.left.width(counterHeight, array);
+            }
+            counterHeight.counter--;
+            while (array.size() <= counterHeight.counter) {
+                array.add(0);
+            }
+            array.set(counterHeight.counter, array.get(counterHeight.counter) + 1);
+            if (this.right != null){
+                this.right.width(counterHeight, array);
+            }
+            counterHeight.counter--;
+        }
+
+        void height(Counter counterHeight, Counter maxHeight){
+            counterHeight.counter++;
+            if (this.left != null) {
+                this.left.height(counterHeight,maxHeight);
+            }
+            counterHeight.counter--;
+            if (counterHeight.counter > maxHeight.counter){
+                maxHeight.counter = counterHeight.counter;
+            }
+            if (this.right != null){
+                this.right.height(counterHeight, maxHeight);
+            }
+            counterHeight.counter--;
+        }
+
+        void leaves(Counter leavesCount){
+            if (Objects.nonNull(this.left)){
+                this.left.leaves(leavesCount);
+            }
+            if (this.left == null && this.right == null){
+                leavesCount.counter++;
+            }
+            if (Objects.nonNull(this.right)){
+                this.right.leaves(leavesCount);
+            }
+        }
+
+        void nodes(Counter countNodes){
+            if (Objects.nonNull(this.left)){
+                this.left.leaves(countNodes);
+            }
+
+            countNodes.counter++;
+
+            if (Objects.nonNull(this.right)){
+                this.right.leaves(countNodes);
+            }
+        }
+
+        void sort(){
 
         }
 
@@ -53,6 +105,24 @@ public class BinaryTree implements ITree {
         public int hashCode() {
             return Objects.hash(value, left, right);
         }
+    }
+
+    private static class Counter {
+
+        int counter;
+
+        public Counter(int counter) {
+            this.counter = counter;
+        }
+
+        public Counter() {
+            this.counter = 0;
+        }
+
+        void increment() {
+            counter++;
+        }
+
     }
 
     Node root;
