@@ -33,7 +33,7 @@ public class Ball extends JPanel implements Runnable {
         if (this.point.x <= 0 || this.point.x + this.size * 2 >= pan.getWidth()) {
             dx = -dx;
         }
-        if (this.point.y <= 0 || this.point.y + 70 >= pan.getHeight()) {
+        if (this.point.y <= 0 || this.point.y + this.size * 2 >= pan.getHeight()) {
             dy = -dy;
         }
         this.point.translate(dx, dy);
