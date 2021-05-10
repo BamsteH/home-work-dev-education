@@ -1,10 +1,8 @@
 package com.github.httpServer;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -40,7 +38,12 @@ public class ServerHandler {
         System.out.println(accessLog);
 
 
-        Path filePath = getFilePath(path);
+        Path filePath = null;
+        try {
+            filePath = getFilePath(path);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
         if (Files.exists(filePath)) {
             // file exist
             String contentType = guessContentType(filePath);
@@ -66,10 +69,13 @@ public class ServerHandler {
         return Files.probeContentType(filePath);
     }
 
-    private static Path getFilePath(String path) {
+
+
+    private static Path getFilePath(String path) throws URISyntaxException {
         if ("/".equals(path)) {
             path = "/index.html";
+
         }
-        return Paths.get("E:/Deveducation/hw_21_ServerHttp/src/main/java/com/github/httpServer/",path);
+        return Paths.get( "E:/Deveducation/hw_21_ServerHttp/src/main/java/com/github/httpServer", path);
     }
 }
