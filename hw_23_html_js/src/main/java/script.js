@@ -51,14 +51,14 @@ button.addEventListener('click', (e) => {
         let regexTestPass = regex.test(logg);
         let regexTestLog = regex.test(pass);
         if (regexTestPass === false) {
-            password.style.border = "1px solid red";
-        } else {
             password.style.border = "1px solid green";
+        } else {
+            password.style.border = "1px solid red";
         }
         if (regexTestLog === false) {
-            login.style.border = "1px solid red";
-        } else {
             login.style.border = "1px solid green";
+        } else {
+            login.style.border = "1px solid red";
         }
         let auth = false;
         let i = 0;

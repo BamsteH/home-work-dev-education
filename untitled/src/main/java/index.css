@@ -1,0 +1,333 @@
+html{
+    scroll-behavior: smooth;
+}
+body {
+    font-family: Arial, monospace;
+    font-size: 14px;
+    display: grid;
+    grid-template-rows: auto 150px;
+    grid-gap: 5px;
+    background: url("assets/background.jpg");
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 80px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 999;
+    display: flex;
+}
+
+.main {
+    background: rgba(177, 177, 177, 0.85);
+    width: 80%;
+    margin: 85px auto auto;
+}
+
+.footer {
+    width: calc(100% + 16px);
+    margin: 0 -8px -8px;
+    background-color: rgba(176, 196, 222, 0.71);
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav {
+    position: relative;
+    height: 20px;
+    margin: 50px 5%;
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    z-index: 1005;
+}
+
+.section {
+    position: relative;
+    border: 1px solid black;
+    height: 880px;
+}
+
+.logo {
+    margin: 10px;
+    width: 250px;
+}
+
+.link {
+    text-decoration: none;
+    color: #0B2349;
+}
+
+.link:active {
+    color: yellow;
+    text-shadow: 0 15px 15px yellow;
+}
+
+.description__h1 {
+    font-size: 60px;
+    color: #0B2349;
+    display: table;
+    margin-left: 15%;
+}
+
+.description__p {
+    font-size: 20px;
+    width: 60%;
+    margin: 80px 10%;
+    text-align: justify;
+}
+
+.description__ul {
+    margin: 80px auto 0 auto;
+    font-size: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50px 50px 50px;
+    width: 60%;
+}
+
+.description__leopard {
+    height: 400px;
+    position: absolute;
+    left: 70%;
+}
+
+.course__h {
+    font-size: 60px;
+    color: #0B2349;
+    display: table;
+    margin-left: 15%;
+}
+
+#carousel {
+    margin: 100px auto 0 auto;
+    width: 800px;
+    box-shadow: 0 -10px 50px 30px white;
+}
+
+.courses__img {
+    width: 500px;
+    height: 300px;
+}
+
+.course__logo {
+    width: 150px;
+    position: absolute;
+    top: 15px;
+    left: 10px;
+}
+
+.coursename {
+    position: absolute;
+    font-size: 20px;
+    font-family: Corbel;
+    font-weight: bolder;
+    z-index: 5;
+}
+
+.frontend {
+    top: 230px;
+    left: 210px;
+}
+
+.backend {
+    top: 240px;
+    left: 400px;
+}
+
+.autoqa {
+    top: 1px;
+    left: 210px;
+}
+
+.courses__descriptions {
+    width: 90%;
+    margin: 100px auto 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.courses__ul {
+    box-shadow: 0 0 5px 5px white;
+    border-radius: 15px;
+    background: lightsteelblue;
+    height: 150px;
+    width: 25%;
+    display: grid;
+    grid-template-rows: 50px 25px 25px 25px;
+}
+
+.courses__card_h3 {
+    font-family: cursive;
+    color: #0B2349;
+}
+
+#carousel2 {
+    width: 80%;
+    margin: 100px auto 0 auto;
+    border: 8px solid #0B2349;
+    border-left: 17px solid #0B2349;
+    border-right: 17px solid #0B2349;
+    border-radius: 15px;
+}
+
+.review__h1 {
+    font-size: 60px;
+    color: #0B2349;
+    display: table;
+    margin-left: 15%;
+}
+
+.review_card {
+    position: relative;
+    height: 450px;
+    width: 300px;
+    border-right: 2px solid white;
+}
+
+.review__ava {
+    margin: 15px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+
+.student_name {
+    position: absolute;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: cursive;
+    top: 30px;
+}
+
+.review__worker {
+    position: absolute;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: sans-serif;
+    top: 80px;
+    left: 170px;
+}
+
+.review__text {
+    position: relative;
+    width: 80%;
+    margin: 90px 10%;
+}
+
+.feedback__h1 {
+    font-size: 60px;
+    color: #0B2349;
+    display: table;
+    margin-left: 15%;
+}
+
+.feedback__form_wrapper {
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 0 25px 25px white;
+    width: 50%;
+    height: 600px;
+    margin: 50px auto 0 auto;
+    display: grid;
+    grid-template-columns: 80%;
+    justify-content: center;
+    background: rgba(224, 255, 255, 0.47);
+}
+
+.input {
+    height: 50px;
+    width: 48%;
+    font-size: 25px;
+}
+
+#form__name {
+    width: 100%;
+    margin-top: 50px;
+}
+
+.dropdown_wrapper {
+    position: relative;
+    margin-top: -40px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+.select_drop {
+    width: 49%;
+    font-size: 20px;
+    font-weight: bold;
+    height: 50px;
+}
+
+.labels {
+    width: 75%;
+    margin: -10px auto 0 auto;
+    display: flex;
+    font-size: 20px;
+}
+#label2{
+    margin-left: 90px;
+}
+.feedback__text{
+    font-family: Arial;
+    font-size: 20px;
+    margin: 0 auto 0 auto;
+    resize: none;
+    height: 130px;
+    width: 500px;
+}
+.feedback__send{
+    margin: 0 auto -30px auto;
+    height: 50px;
+    width: 300px;
+    border-radius: 25px;
+    border: none;
+    background: #e0e0e0;
+    font-size: 25px;
+    font-weight: bold;
+    color: #0B2349;
+    box-shadow: 0 0 15px 5px lightsteelblue;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+}
+.feedback__send:hover{
+    box-shadow: 0 0 15px 15px lightsteelblue;
+}
+.feedback__send:active{
+    background: linear-gradient(0.3turn, darkgray, lightgray, ghostwhite);
+    box-shadow: 0 0 15px 15px #9fd4ee;
+}
+
+.footer__phone_list{
+    display: flex;
+    flex-direction: column;
+}
+.phones{
+    margin-top: 30px;
+}
+.footer__info{
+    display: flex;
+    flex-direction: column;
+}
+.address, .dev_email{
+    margin-top: 30px;
+    margin-left: -100px;
+}
+.footer__map{
+    margin: 30px 250px;
+    border-radius: 15px;
+}
+.copywrite{
+    margin-top: 130px;
+    margin-left: 230px;
+}
